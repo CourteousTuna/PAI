@@ -3,16 +3,19 @@ from math import *
 def IT(t):
     return t
 
-def Proba_S(t):
+def Proba_S(t): #proba survie 
     global mort
     return mort[t] #proba à l'instant t 
 
 def prob(age_cont,t ):
-    print("salut")
+    global rachat
+    if age_cont>=8:
+        print("à finir")
+    else :
+        print("à finir")        
     
     
-    
-def Proba_RS(t):
+def Proba_RS(t): #proba rachat structurel
     age_cont=date(t) #calcul age du compte 
     return prob(age_cont,t) #calcul proba en fonction de l'age du compte 
 
@@ -21,26 +24,28 @@ def deces(t,pm,tmg):
         p=Proba_S(t) #proba survie
         return pm*(1-p)
 
-def Proba_RC(t):
+def Proba_RC(t): #proba rachat conjonc
     global conj
     if conj==True:
         print("pas de fonction")
-    else :
+    else : #modèle basique 
         return 0
         
         
         
-def RT(t,pm,tmg):
+def RT(t,pm,tmg): #Rachat total
     if tmg==[]: 
         d=deces(t,pm,tmg)
         ps=Proba_RS(t)
         pc=Proba_RC(t)
+        return min([pm-d,pm*max([0,pc+ps])])
 
 def RP(t):
+    global rp
     return t
 
 
-def PreN(t,pm,tmg):
+def PreN(t,pm,tmg): #calcul prestations nettes 
     d=deces(t,pm,tmg)
     rt=RT(t,pm) #rachat total
     rp=RP(t) #rachat partiel
@@ -55,7 +60,7 @@ def Arb(t):
 def PMartR(t):
     return t
 
-def PM(t,k,tmg):
+def PM(t,k,tmg): #calcul provision mathématique 
     if t==0:
         return k
     else :
@@ -76,6 +81,8 @@ if __name__=="__main__":
     tmg=[]
     mort=[]
     rachat=[]
+    conj=False
+    rp=False 
     print(PM(10,invest_ini,tmg))
     
     
