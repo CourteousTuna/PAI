@@ -8,7 +8,7 @@ def Proba_S(t):
     return mort[t] #proba à l'instant t 
 
 def prob(age_cont,t ):
-    
+    print("salut")
     
     
     
