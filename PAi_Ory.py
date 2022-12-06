@@ -79,3 +79,4 @@ if __name__=="__main__":
     print(PM(10,invest_ini,tmg))
     
 print('hello')
+print('kari')
