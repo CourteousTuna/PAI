@@ -1,4 +1,4 @@
-import xlrd
+
 
 #document = xlrd.open_workbook("Hypotheses.xlsx")
 #feuille_rachat = document.sheet_by_name('Rachat')
